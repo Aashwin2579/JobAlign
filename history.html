@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head><title>History</title></head>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<body>
+<h2>Your Scan History</h2>
+<table border="1">
+<tr><th>ID</th><th>Resume</th><th>Job Desc</th><th>Score</th></tr>
+{% for row in records %}
+<tr>
+    <td>{{ row[0] }}</td>
+    <td>{{ row[1][:50] }}...</td>
+    <td>{{ row[2][:50] }}...</td>
+    <td>{{ row[3] }}%</td>
+</tr>
+{% endfor %}
+</table>
+<br>
+<a href="/home">Back</a>
+</body>
+</html>

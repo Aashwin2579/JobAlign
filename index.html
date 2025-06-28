@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+  <meta charset="UTF-8">
+  <title>Upload Resume</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://kit.fontawesome.com/a2e0c64f2e.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      background-color:rgb(203, 179, 179);
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 50px;
+      min-height: 100vh;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    h2 {
+      margin-bottom: 30px;
+      animation: fadeIn 1s ease-in;
+      color:rgb(240, 240, 240);
+    }
+
+    form {
+      background-color: #111;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 231, 231, 0.1);
+      width: 90%;
+      max-width: 500px;
+      animation: slideIn 0.8s ease-out;
+    }
+
+    input[type="file"],
+    textarea,
+    input[type="submit"] {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    input[type="submit"] {
+      background-color: #28a745;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #218838;
+    }
+
+    a {
+      color:rgb(252, 252, 252);
+      margin: 10px;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <h2><i class="fas fa-upload"></i> Upload Resume & Job Description</h2>
+
+  <form action="/scan" method="post" enctype="multipart/form-data">
+    <label><i class="fas fa-file-alt"></i> Resume:</label>
+    <input type="file" name="resume" required>
+
+    <label><i class="fas fa-briefcase"></i> Job Description:</label>
+    <textarea name="job_desc" rows="6" required></textarea>
+
+    <input type="submit" value="🔍 Scan">
+  </form>
+
+  <br>
+
+  <div>
+    <a href="/history"><i class="fas fa-history"></i> View History</a> |
+    <a href="/export"><i class="fas fa-file-csv"></i> Export CSV</a> |
+    <a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  </div>
+
+</body>
+</html>

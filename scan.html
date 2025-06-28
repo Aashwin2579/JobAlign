@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scan Resume</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Paste Resume and Job Description</h2>
+        <form method="post">
+            <textarea name="resume" placeholder="Paste Resume Text Here..." required></textarea><br>
+            <textarea name="job_desc" placeholder="Paste Job Description Here..." required></textarea><br>
+            <input type="submit" class="btn" value="Scan">
+        </form>
+        {% if score is not none %}
+            <div class="result-box">
+                <h3>Match Score: {{ score }}%</h3>
+                {% if score > 70 %}
+                    <p class="success">Great match! You should apply.</p>
+                {% elif score > 40 %}
+                    <p class="warning">Decent match. Tailor your resume more.</p>
+                {% else %}
+                    <p class="danger">Low match. Consider updating your resume.</p>
+                {% endif %}
+            </div>
+        {% endif %}
+        <a href="/" class="btn">Back to Home</a>
+    </div>
+</body>
+</html>

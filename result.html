@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Scan Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color:rgb(203, 179, 179);
+            color: #ffffff;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color:rgb(255, 255, 255);
+        }
+
+        .score-box {
+            border: 2px solid #0dcaf0;
+            padding: 30px;
+            border-radius: 15px;
+            display: inline-block;
+            background-color:rgb(118, 108, 108);
+            box-shadow: 0 0 20px rgba(13, 202, 240, 0.2);
+            animation: pulse 1s ease-out;
+        }
+
+        .score-box h2 {
+            font-size: 2.5em;
+            margin: 0;
+            color:rgb(199, 214, 209);
+        }
+
+        a {
+            color:rgb(191, 191, 191);
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            display: inline-block;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color:rgb(176, 211, 199);
+            text-decoration: underline;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <h1>📊 Resume Score</h1>
+    <div class="score-box">
+        <h2>{{ score }}%</h2>
+    </div>
+    <br><br>
+    <a href="/">← Back to Home</a>
+</body>
+</html>

@@ -1,0 +1,142 @@
+/* ===== Global Reset & Base Styles ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f2f6fc;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* ===== Container Styling ===== */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== Typography ===== */
+h1, h2, h3 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+/* ===== Form Inputs ===== */
+input[type="file"],
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+/* ===== Button Styling ===== */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #007BFF;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+}
+
+/* ===== Table Styling ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: left;
+}
+
+th {
+    background-color: #007BFF;
+    color: white;
+    font-weight: 600;
+}
+
+tr:hover {
+    background-color: #f1f5ff;
+}
+
+/* ===== Result Feedback Box ===== */
+.result-box {
+    margin-top: 25px;
+    padding: 20px;
+    background-color: #f8f9fb;
+    border-left: 6px solid #007BFF;
+    border-radius: 8px;
+    font-size: 1.1rem;
+}
+
+/* ===== Status Tag Colors ===== */
+.success {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.warning {
+    color: #ff9800;
+    font-weight: bold;
+}
+
+.danger {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    table, th, td {
+        font-size: 14px;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 14px;
+    }
+}
