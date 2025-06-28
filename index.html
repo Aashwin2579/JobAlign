@@ -1,115 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
   <meta charset="UTF-8">
-  <title>Upload Resume</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <script src="https://kit.fontawesome.com/a2e0c64f2e.js" crossorigin="anonymous"></script>
+  <title>JobAlign</title>
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      background-color:rgb(203, 179, 179);
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #d5d5de, #1e3c56);
       color: #fff;
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 50px;
       min-height: 100vh;
-      transition: background 0.3s, color 0.3s;
+      overflow-x: hidden;
     }
 
-    h2 {
-      margin-bottom: 30px;
-      animation: fadeIn 1s ease-in;
-      color:rgb(240, 240, 240);
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 50px;
+      animation: slideDown 1s ease-in-out;
     }
 
-    form {
-      background-color: #111;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(255, 231, 231, 0.1);
-      width: 90%;
-      max-width: 500px;
-      animation: slideIn 0.8s ease-out;
+    .logo h1 {
+      font-size: 2rem;
     }
 
-    input[type="file"],
-    textarea,
-    input[type="submit"] {
-      width: 100%;
-      margin-top: 10px;
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      margin-bottom: 20px;
-      font-size: 14px;
+    .menu {
+      display: flex;
+      gap: 15px;
     }
 
-    textarea {
-      resize: vertical;
-    }
-
-    input[type="submit"] {
-      background-color: #28a745;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    input[type="submit"]:hover {
-      background-color: #218838;
-    }
-
-    a {
-      color:rgb(252, 252, 252);
-      margin: 10px;
+    .menu a {
       text-decoration: none;
-      font-size: 14px;
-      transition: color 0.3s;
+      padding: 10px 18px;
+      border-radius: 8px;
+      background: #fff;
+      color: #000;
+      font-weight: bold;
+      transition: transform 0.2s ease, background 0.3s;
     }
 
-    a:hover {
-      text-decoration: underline;
+    .menu a:hover {
+      background: #f0f0f0;
+      transform: scale(1.05);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 30px 30px;
+      animation: fadeIn 1.2s ease-in;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: auto;
+      color: #dcdcdc;
+      line-height: 1.7;
+    }
+
+    section {
+      padding: 50px 30px;
+      max-width: 900px;
+      margin: auto;
+      animation: slideFade 1.3s ease-in-out;
+    }
+
+    section h3 {
+      color: #0dcaf0;
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+    }
+
+    section p {
+      font-size: 1rem;
+      color: #e2e2e2;
+      line-height: 1.8;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #aaa;
+      margin-top: 50px;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideFade {
+      from { opacity: 0; transform: translateY(50px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .menu {
+        margin-top: 15px;
+      }
+
+      .hero h2 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h2><i class="fas fa-upload"></i> Upload Resume & Job Description</h2>
+  <header>
+    <div class="logo">
+      <h1>JobAlign 🚀</h1>
+    </div>
+    <div class="menu">
+      <a href="login.html">🔐 Login</a>
+      <a href="scan.html">📄 Scan Now</a>
+    </div>
+  </header>
 
-  <form action="/scan" method="post" enctype="multipart/form-data">
-    <label><i class="fas fa-file-alt"></i> Resume:</label>
-    <input type="file" name="resume" required>
-
-    <label><i class="fas fa-briefcase"></i> Job Description:</label>
-    <textarea name="job_desc" rows="6" required></textarea>
-
-    <input type="submit" value="🔍 Scan">
-  </form>
-
-  <br>
-
-  <div>
-    <a href="/history"><i class="fas fa-history"></i> View History</a> |
-    <a href="/export"><i class="fas fa-file-csv"></i> Export CSV</a> |
-    <a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  <div class="hero">
+    <h2>Welcome to JobAlign</h2>
+    <p>Match your resume to your dream job with AI-powered insights.<br>
+       We help you stand out with smart score-based resume analysis.</p>
   </div>
+
+  <section>
+    <h3>🏢 About the Company</h3>
+    <p>
+      JobAlign helps job seekers bridge the gap between their skills and recruiters' expectations.
+      By using Natural Language Processing, we analyze your resume and job descriptions to deliver insightful match scores,
+      increasing your chances of landing interviews.
+    </p>
+  </section>
+
+  <section>
+    <h3>⚙️ How the Website Works</h3>
+    <p>
+      <strong>Step 1:</strong> Log in to your account<br>
+      <strong>Step 2:</strong> Upload your resume (PDF)<br>
+      <strong>Step 3:</strong> Paste the job description<br>
+      <strong>Step 4:</strong> Get an instant match score & analysis<br>
+      <strong>Step 5:</strong> Track and export your job scans
+    </p>
+  </section>
+
+  <section>
+    <h3>🤖 New Launch: AI Resume Assistant</h3>
+    <p>
+      We are launching our AI Assistant — your smart companion to help craft the perfect resume.<br>
+      It offers real-time suggestions, rewrites sections to match job keywords, and provides feedback based on industry best practices.<br>
+      Whether you're a fresher or experienced professional, our assistant is your career booster!
+    </p>
+  </section>
+
+  <footer>
+    &copy; 2025 JobAlign — Connecting Skills with Opportunities
+  </footer>
 
 </body>
 </html>
